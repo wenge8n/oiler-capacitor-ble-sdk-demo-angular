@@ -1,0 +1,7 @@
+{
+  "name": "oiler-capacitor-ble-sdk-demo-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
