@@ -19,7 +19,24 @@
     </ion-toolbar>
   </ion-header>
   
+  <ion-button [disabled]="isScanningWithoutFilter" expand="full" (click)="scanWithoutServicesFilter()">Scan Without Services Filter</ion-button>
+  <ion-button [disabled]="isScanningWithFilter" expand="full" (click)="scanWithServicesFilter()">Scan With Services Filter</ion-button>
+  <ion-button [disabled]="device" expand="full" (click)="connectDevice()">Connect</ion-button>
+  <ion-button [disabled]="!device" expand="full" (click)="disconnectDevice()">Disconnect</ion-button>
+
+  <ion-label>Device Name - {{deviceName}}</ion-label>
+  <br>
+  <ion-label>Error - {{error}}</ion-label>
+  <br>
+  <ion-label>Device list</ion-label>
+  <br>
   <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
+    <ion-item *ngFor="let scanResult of bluetoothScanResults">
+      <ion-label>{{scanResult.device?.name ?? "NO name" }}</ion-label>
+    </ion-item>
   </ion-list>
+  
+  <!-- <ion-list>
+    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
+  </ion-list> -->
 </ion-content>
